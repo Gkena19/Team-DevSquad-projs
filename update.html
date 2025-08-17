@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Edit {{ building.name }} - Building Management System{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h2>Edit Building</h2>
+    <a href="{{ url_for('view_building', id=building.id) }}" class="btn btn-secondary">Back to Details</a>
+</div>
+
+<div class="form-container">
+    <form method="POST" class="student-form">
+        <div class="form-group">
+            <label for="name">Building Name:</label>
+            <input type="text" id="name" name="name" value="{{ building.name }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="{{ building.address }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="floors">Floors:</label>
+            <input type="number" id="floors" name="floors" value="{{ building.floors }}" min="1" required>
+        </div>
+
+        <div class="form-group">
+            <label for="year_built">Year Built:</label>
+            <input type="number" id="year_built" name="year_built" value="{{ building.year_built }}" min="1000" max="9999" required>
+        </div>
+
+        <div class="form-group">
+            <label for="building_code">Building Code:</label>
+            <input type="text" id="building_code" name="building_code" value="{{ building.building_code }}" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Building</button>
+            <a href="{{ url_for('view_building', id=building.id) }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
